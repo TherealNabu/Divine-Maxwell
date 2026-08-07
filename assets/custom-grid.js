@@ -43,8 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderPopup(product) {
     let optionsHtml = '';
 
-    product.options.forEach(function (optionName, index) {
+    product.options.forEach(function (option, index) {
       const optionKey = 'option' + (index + 1);
+      const optionName = typeof option === 'string' ? option : option.name;
       const values = [];
       product.variants.forEach(function (variant) {
         const val = variant[optionKey];
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
       '<div class="custom-popup__price" id="custom-popup-price">' + formatMoney(product.price) + '</div>' +
       '<div class="custom-popup__description">' + stripHtml(product.description) + '</div>' +
       optionsHtml +
-      '<button class="custom-popup__add-to-cart" id="custom-popup-add-btn" disabled>Add to Cart</button>';
+      '<button class="custom-popup__add-to-cart" id="custom-popup-add-btn" disabled>Select options</button>';
 
     attachOptionListeners(product);
     document.getElementById('custom-popup-add-btn').addEventListener('click', handleAddToCart);
