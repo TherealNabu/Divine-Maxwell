@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -21,10 +22,12 @@
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -37,7 +40,9 @@
         },
         "page-content": {
           "type": "page-content",
-          "settings": {},
+          "settings": {
+            "text_color": ""
+          },
           "blocks": {}
         }
       },
@@ -52,9 +57,74 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "custom_banner_i3Bk6F": {
+      "type": "custom-banner",
+      "name": "Custom Banner",
+      "settings": {
+        "logo_text": "TISSO VISON",
+        "tagline_text": "Find the ideal gift for your loved ones.",
+        "button_text": "Choose Gift",
+        "button_link": ""
+      }
+    },
+    "custom_grid_QVLpgD": {
+      "type": "custom-grid",
+      "blocks": {
+        "product_item_Dhybjm": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_9MthhR": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_UzXUVK": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_Rg4HKc": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_QLjHkx": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_ejPDfX": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_Dhybjm",
+        "product_item_9MthhR",
+        "product_item_UzXUVK",
+        "product_item_Rg4HKc",
+        "product_item_QLjHkx",
+        "product_item_ejPDfX"
+      ],
+      "name": "Custom Grid",
+      "settings": {
+        "heading": "Tisso vison in the wild"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_banner_i3Bk6F",
+    "custom_grid_QVLpgD"
   ]
 }
