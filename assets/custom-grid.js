@@ -120,8 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const items = [{ id: variant.id, quantity: 1 }];
 
-    const isBlackMedium = Object.values(selectedOptions).indexOf('Black') !== -1 &&
-                           Object.values(selectedOptions).indexOf('Medium') !== -1;
+    const values = Object.values(selectedOptions);
+    const hasBlack = values.indexOf('Black') !== -1;
+    const hasMedium = values.indexOf('Medium') !== -1 || values.indexOf('M') !== -1;
+    const isBlackMedium = hasBlack && hasMedium;
 
     if (isBlackMedium) {
       fetch('/products/dark-winter-jacket.js')
