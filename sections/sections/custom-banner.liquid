@@ -1,0 +1,116 @@
+<div class="custom-banner">
+  <div class="custom-banner__logo">
+    {{ section.settings.logo_text }}
+  </div>
+  <div class="custom-banner__tagline">
+    {{ section.settings.tagline_text }}
+  </div>
+  <a href="{{ section.settings.button_link }}" class="custom-banner__button">
+    {{ section.settings.button_text }}
+    <span class="custom-banner__arrow">→</span>
+  </a>
+</div>
+
+<style>
+  .custom-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid #e5e5e5;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .custom-banner__logo {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .custom-banner__tagline {
+    font-size: 14px;
+    color: #333;
+    flex: 1;
+    text-align: center;
+  }
+
+  .custom-banner__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f5e642;
+    color: #000;
+    text-decoration: none;
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .custom-banner__button:hover {
+    background-color: #e6d834;
+    transform: translateX(4px);
+  }
+
+  .custom-banner__button:active {
+    transform: translateX(2px) scale(0.97);
+  }
+
+  .custom-banner__arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .custom-banner__button:hover .custom-banner__arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 749px) {
+    .custom-banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .custom-banner__tagline {
+      text-align: left;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "tagline_text",
+      "label": "Tagline text",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Choose Gift"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
+}
+{% endschema %}
