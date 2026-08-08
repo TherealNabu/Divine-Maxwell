@@ -12,32 +12,6 @@
     "main": {
       "type": "main-page",
       "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "page-content": {
           "type": "page-content",
           "settings": {
@@ -47,9 +21,9 @@
         }
       },
       "block_order": [
-        "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -65,7 +39,13 @@
         "logo_text": "TISSO VISON",
         "tagline_text": "Find the ideal gift for your loved ones.",
         "button_text": "Choose Gift",
-        "button_link": ""
+        "button_link": "",
+        "hero_image": "shopify://shop_images/Frame2_6a4364a3-d4e8-4680-a0ce-1bb9a64e1895.png",
+        "heading": "The Gift Guide",
+        "hero_description": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "shop_button_text": "Shop Now",
+        "shop_button_link": "",
+        "bottom_text": "Sustainable, ethically made clothes in sizes XXS to 6XL"
       }
     },
     "custom_grid_QVLpgD": {

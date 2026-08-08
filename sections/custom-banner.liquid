@@ -1,18 +1,46 @@
 <div class="custom-banner">
-  <div class="custom-banner__logo">
-    {{ section.settings.logo_text }}
+  <div class="custom-banner__topbar">
+    <div class="custom-banner__logo">
+      {{ section.settings.logo_text }}
+    </div>
+    <div class="custom-banner__tagline">
+      {{ section.settings.tagline_text }}
+    </div>
+    <a href="{{ section.settings.button_link }}" class="custom-banner__button custom-banner__button--top">
+      {{ section.settings.button_text }}
+      <span class="custom-banner__arrow">→</span>
+    </a>
   </div>
-  <div class="custom-banner__tagline">
-    {{ section.settings.tagline_text }}
+
+  <div class="custom-banner__hero">
+    <div class="custom-banner__hero-text">
+      <h1 class="custom-banner__heading">{{ section.settings.heading }}</h1>
+      <p class="custom-banner__description">{{ section.settings.hero_description }}</p>
+      <a href="{{ section.settings.shop_button_link }}" class="custom-banner__button custom-banner__button--shop">
+        {{ section.settings.shop_button_text }}
+        <span class="custom-banner__arrow">→</span>
+      </a>
+    </div>
+
+    {% if section.settings.hero_image %}
+      <div class="custom-banner__hero-image-wrap">
+        <img
+          class="custom-banner__hero-image"
+          src="{{ section.settings.hero_image | image_url: width: 1400 }}"
+          alt=""
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
   </div>
-  <a href="{{ section.settings.button_link }}" class="custom-banner__button">
-    {{ section.settings.button_text }}
-    <span class="custom-banner__arrow">→</span>
-  </a>
+
+  <div class="custom-banner__bottom-text">
+    {{ section.settings.bottom_text }}
+  </div>
 </div>
 
 <style>
-  .custom-banner {
+  .custom-banner__topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,8 +68,6 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: #f5e642;
-    color: #000;
     text-decoration: none;
     padding: 10px 18px;
     font-weight: 600;
@@ -51,12 +77,32 @@
     transition: transform 0.2s ease, background-color 0.2s ease;
   }
 
-  .custom-banner__button:hover {
+  .custom-banner__button--top {
+    background-color: #f5e642;
+    color: #000;
+  }
+
+  .custom-banner__button--top:hover {
     background-color: #e6d834;
     transform: translateX(4px);
   }
 
-  .custom-banner__button:active {
+  .custom-banner__button--top:active {
+    transform: translateX(2px) scale(0.97);
+  }
+
+  .custom-banner__button--shop {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .custom-banner__button--shop:hover {
+    background-color: #f5e642;
+    color: #000;
+    transform: translateX(4px);
+  }
+
+  .custom-banner__button--shop:active {
     transform: translateX(2px) scale(0.97);
   }
 
@@ -68,13 +114,84 @@
     transform: translateX(3px);
   }
 
+  .custom-banner__hero {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 32px;
+  }
+
+  .custom-banner__hero-text {
+    flex: 0 0 340px;
+    max-width: 340px;
+  }
+
+  .custom-banner__hero-image-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .custom-banner__hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .custom-banner__heading {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    line-height: 1.1;
+  }
+
+  .custom-banner__description {
+    font-size: 14px;
+    color: #333;
+    margin: 0 0 24px;
+    line-height: 1.5;
+  }
+
+  .custom-banner__bottom-text {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+    padding: 12px;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  @media (max-width: 989px) {
+    .custom-banner__hero {
+      flex-direction: column;
+      text-align: center;
+    }
+    .custom-banner__hero-text {
+      flex: none;
+      max-width: 100%;
+      order: 2;
+    }
+    .custom-banner__hero-image-wrap {
+      order: 1;
+    }
+    .custom-banner__button--shop {
+      justify-content: center;
+    }
+  }
+
   @media (max-width: 749px) {
-    .custom-banner {
+    .custom-banner__topbar {
       flex-direction: column;
       align-items: flex-start;
     }
     .custom-banner__tagline {
       text-align: left;
+    }
+    .custom-banner__hero {
+      padding: 32px 20px;
+    }
+    .custom-banner__heading {
+      font-size: 28px;
     }
   }
 </style>
@@ -92,19 +209,53 @@
     {
       "type": "text",
       "id": "tagline_text",
-      "label": "Tagline text",
+      "label": "Top bar tagline",
       "default": "Find the ideal gift for your loved ones."
     },
     {
       "type": "text",
       "id": "button_text",
-      "label": "Button text",
+      "label": "Top bar button text",
       "default": "Choose Gift"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button link"
+      "label": "Top bar button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero illustration"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hero heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "shop_button_text",
+      "label": "Hero button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "shop_button_link",
+      "label": "Hero button link"
+    },
+    {
+      "type": "text",
+      "id": "bottom_text",
+      "label": "Bottom tagline",
+      "default": "Sustainable, ethically made clothes in sizes XXS to 6XL"
     }
   ],
   "presets": [
